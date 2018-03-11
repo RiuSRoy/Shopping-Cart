@@ -1,10 +1,11 @@
 
 .thumbnail img{
-  max-height: 150px;
+  max-height: 200px;
 }
 
-.thumbnail .desctiption{
-  color : #74a00d; 
+.thumbnail .description{
+  color : #a11a08; 
+  font-family: Sofia;
 }
 .price{
   font-weight: bold;
@@ -13,5 +14,13 @@
 .pos{
   text-align: center;
   padding: 2vh;
-  margin: 3vh;
+  margin: 0.2vh;
+}
+.hotel_name{
+  font-family: Lobster;
+  font-weight: 400;
+  color: blueviolet;  
+}
+.thumbnail .btn{
+  font-family: Oleo Script;
 }

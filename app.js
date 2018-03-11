@@ -3,16 +3,22 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 var expressHbs = require('express-handlebars');
 var mongoose = require('mongoose');
+var session = require('express-session');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var bodyParser = require('body-parser');
+var multer = require('multer');
+var flash = require('connect-flash');
+var mongo = require('mongodb');
 
 var index = require('./routes/index');
 //var users = require('./routes/users');
 
 var app = express();
 
-mongoose.connect('localhost:27017/shopping');
+mongoose.connect('mongodb://localhost:27017/shopping');
 // view engine setup
 app.engine('.hbs', expressHbs({defaultLayout: 'layout',extname: '.hbs'}));
 app.set('view engine', '.hbs');
@@ -23,6 +29,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(session({secret:'aindrila',resave:false,saveUninitialized : false}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);

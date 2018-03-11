@@ -8,34 +8,34 @@ mongoose.connect('mongodb://localhost:27017/shopping')
     console.log('Connected correctly to the server!');
     var products = [
         new Product({
-            imagePath:'https://upload.wikimedia.org/wikipedia/en/5/5e/Gothiccover.png',
+            imagePath:'https://images.pexels.com/photos/441379/pexels-photo-441379.jpeg?w=940&h=650&auto=compress&cs=tinysrgb',
             title:'Vivanta',
             description:'By Taj! :P',
-            price: 45000
+            price: '$45000'
         }),
         new Product({
-            imagePath:'https://upload.wikimedia.org/wikipedia/en/5/5e/Gothiccover.png',
+            imagePath:'https://images.pexels.com/photos/919/night-dark-hotel-luxury.jpg?h=350&auto=compress&cs=tinysrgb',
             title:'The Oberois',
             description:'A classy 5*! :O',
-            price: 50000
+            price: '$50000'
         }),
         new Product({
-            imagePath:'https://upload.wikimedia.org/wikipedia/en/5/5e/Gothiccover.png',
+            imagePath:'https://images.pexels.com/photos/594077/pexels-photo-594077.jpeg?h=350&auto=compress&cs=tinysrgb',
             title:'Landmark',
             description:'The age old! :)',
-            price: 5000
+            price: '$5000'
         }),
         new Product({
-            imagePath:'https://upload.wikimedia.org/wikipedia/en/5/5e/Gothiccover.png',
+            imagePath:'https://images.pexels.com/photos/261429/pexels-photo-261429.jpeg?h=350&auto=compress&cs=tinysrgb',
             title:'Leelas',
             description:'7* resort :D',
-            price: 75000
+            price: '$75000'
         }),
         new Product({
-            imagePath:'https://upload.wikimedia.org/wikipedia/en/5/5e/Gothiccover.png',
+            imagePath:'https://images.pexels.com/photos/169193/pexels-photo-169193.jpeg?h=350&auto=compress&cs=tinysrgb',
             title:'The Taj',
             description:"The attack that shook all :'(",
-            price: 45000
+            price: '$45000'
         })
     ];
     return products;
