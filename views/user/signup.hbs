@@ -1,8 +1,14 @@
 <div class="container-fluid">
     <div class="row">
-    <div class="col-md-12 col-md-offset-4">
+    <div class="col-lg-4 col-lg-offset-4">
         <h1>Sign Up</h1>
-        Validation Errors
+        {{# if hasErrors}}
+            <div class="alert alert-danger">
+                {{# each messages}}
+                    <p>{{this}}</p>
+                {{/each}}
+            </div>
+        {{/if}}
         <form action="/user/signup" method="POST">
             <div class="form-group">
                 <label for="email">E-mail</label>
@@ -12,7 +18,7 @@
                 <label for="password">password</label>
                 <input type="password" id="password" name="password" class="form-control">
             </div>
-            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <!--<input type="hidden" name="_csrf" value="{{csrfToken}}">-->
             <button type="submit" class="btn btn-primary">Sign Up</button>
         </form>
     </div>

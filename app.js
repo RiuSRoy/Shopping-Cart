@@ -12,6 +12,7 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 var flash = require('connect-flash');
 var mongo = require('mongodb');
+var validator = require('express-validator');
 
 var index = require('./routes/index');
 //var users = require('./routes/users');
@@ -19,6 +20,9 @@ var index = require('./routes/index');
 var app = express();
 
 mongoose.connect('mongodb://localhost:27017/shopping');
+require('./config/passport'); //will load the passport file and run through it
+
+
 // view engine setup
 app.engine('.hbs', expressHbs({defaultLayout: 'layout',extname: '.hbs'}));
 app.set('view engine', '.hbs');
@@ -28,11 +32,21 @@ app.set('view engine', '.hbs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(validator());
 app.use(cookieParser());
 
-app.use(session({secret:'aindrila',resave:false,saveUninitialized : false}));
+app.use(session({
+  secret:'aindrila',
+  resave:true,
+  saveUninitialized : true
+}));
+//Only after session is initialized, the following three lines can be used
+app.use(flash());
+app.use(passport.initialize()); 
+app.use(passport.session());  //stores the user
 
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', index);
 //app.use('/users', users);
