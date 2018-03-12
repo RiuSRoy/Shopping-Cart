@@ -15,6 +15,7 @@ var mongo = require('mongodb');
 var validator = require('express-validator');
 
 var index = require('./routes/index');
+var userRouter = require('./routes/user');
 //var users = require('./routes/users');
 
 var app = express();
@@ -47,9 +48,13 @@ app.use(passport.session());  //stores the user
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use( function(req,res,next){
+  res.locals.login = req.isAuthenticated(); //login is now declared as a global variable
+  next();
+});
 
+app.use('/user',userRouter);
 app.use('/', index);
-//app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
