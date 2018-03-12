@@ -13,6 +13,8 @@ var multer = require('multer');
 var flash = require('connect-flash');
 var mongo = require('mongodb');
 var validator = require('express-validator');
+var MongoStore = require('connect-mongo');
+
 
 var index = require('./routes/index');
 var userRouter = require('./routes/user');
@@ -39,7 +41,9 @@ app.use(cookieParser());
 app.use(session({
   secret:'aindrila',
   resave:true,
-  saveUninitialized : true
+  saveUninitialized : true,
+  store : new MongoStore({mongooseConnection : mongoose.connection }),
+  cookie : { maxAge : 180 * 60 * 1000 }
 }));
 //Only after session is initialized, the following three lines can be used
 app.use(flash());
@@ -50,6 +54,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use( function(req,res,next){
   res.locals.login = req.isAuthenticated(); //login is now declared as a global variable
+  res.locals.session = req.session;   //seesion can accessed now from anywhere
   next();
 });
 
