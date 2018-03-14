@@ -10,7 +10,6 @@ passport.deserializeUser((id,done) => {//id = user_id stored in the session
         done(err, user);
     });
 });
-
 //strategy to create a new user
 passport.use('local-signup', new LocalStrategy({
     usernameField: 'email',
@@ -18,11 +17,13 @@ passport.use('local-signup', new LocalStrategy({
     passReqToCallback: true
 } , (req,email,password,done) =>
 {
-    
+    var username = req.body.username;
+
     req.checkBody('email' , 'Email field is required').notEmpty();
     req.checkBody('email' , 'Invalid email').isEmail();
     req.checkBody('password' , 'Password field is required').notEmpty();
     req.checkBody('password','Password length should be greater than 3').isLength({min : 4});
+    req.checkBody('username' , 'Username field is required').notEmpty();
 
     var errors = req.validationErrors();
     if(errors) {
@@ -43,9 +44,20 @@ passport.use('local-signup', new LocalStrategy({
                 console.log('OOPpppssss!!!\n')
                 return done(null,false ,req.flash('signupMessage', 'This Email is already taken.'));
             }
+            
+        });
+        User.findOne({'username' : username}, (err,user) =>{
+            if(err) {
+                return done(err);
+            }
+            if(user) {
+                console.log('OOPpppssss!!!\n')
+                return done(null,false ,req.flash('signupMessage', 'This username is already in use!'));
+            }
             else {
                 var newUser = new User();
                 newUser.email = email;
+                newUser.username = username;
                 newUser.password = newUser.encryptPassword(password);
                 newUser.save((err,result) => {
                     if(err) {
@@ -53,7 +65,7 @@ passport.use('local-signup', new LocalStrategy({
                     }
                     return done(null , newUser);
                 });
-            }
+            }            
         });
     }        
 }));

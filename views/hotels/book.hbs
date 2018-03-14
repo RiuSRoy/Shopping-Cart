@@ -1,0 +1,84 @@
+{{# if vacancy}}
+<div class="container-fluid">
+  <div class="row">
+    <form class="col-12"  action="" method="POST">
+      <div class="row">
+        <div class="input-field col-12">
+          <input placeholder="Name of the person for whom the booking is done" id="name" type="text" class="validate">
+          <label for="na
+          me">FULL NAME</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col-6">
+          <select>
+            <option value="" disabled selected>Choose event type</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <label>Event type</label>
+        </div>
+        <div class="input-field col-6">
+          <select multiple>
+            <option value="" disabled selected>Choose style(s)</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <label>Styles</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col-6">
+          <label>Begin date</label>
+          <input id="beginDate" type="date" class="datepicker">
+          
+        </div>
+        <div class="input-field col-6">
+          <label>End date</label>
+          <input id="endDate" type="date" class="datepicker">
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col-12">
+          <input placeholder="Who is organizing the event?" id="organizer" type="text" class="validate">
+          <label for="organizer">Organizer</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col-6">
+          <input placeholder="http://www.mywebsite.com" id="website" type="text" class="validate">
+          <label for="website">Website</label>
+        </div>
+        <div class="input-field col-6">
+          <input placeholder="contact@myweb.com" id="email" type="text" class="validate">
+          <label for="email">Contact email</label>
+        </div>
+      </div>
+
+      <div class="row">
+            <div class="input-field col-12">
+              <textarea id="description" class="materialize-textarea" length="140"></textarea>
+              <label for="description">Describe the event in a tweet!</label>
+            </div>
+          </div>
+    </form>
+  </div>
+</div>
+
+{{else}}
+  <dialog>
+      <div class="container-fluid">
+        <div class="row">
+          <h1>Oops!...bookings are full!</h1>
+  <h3>We look forward to serve you some other day!</h3>
+      </div>
+    </div>
+  </dialog>
+  
+  
+  
+{{/if}}

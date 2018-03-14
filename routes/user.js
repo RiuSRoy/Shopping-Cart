@@ -1,19 +1,32 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var Users = require('../models/user');
+const bodyParser = require('body-parser'); 
+router.use(bodyParser.json());
 //var csrf = require('csurf');
 //var csrfProtection = csrf();
 //router.use(csrfProtection); //all routers are protected by the csrf protection!
 
-router.get('/profile',isLoggedIn,(req,res,next) => {
-    res.render('user/profile');
-  });
+
+
+router.route('/profile',isLoggedIn)
+.get((req,res,next) => {
+    var userId = req.params.id;
+    Users.findOne({_id: userId})
+    .then((user)=>{
+        res.render('user/profile',{'user' : user});
+    })
+    .catch((err) => next(err));
+});
 
 
 router.get('/logout',isLoggedIn, (req,res,next) => {
     req.logout();
     res.redirect('/');
-})
+});
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
 router.use('/',notLoggedIn, (req,res,next) => {
     next();

@@ -1,3 +1,27 @@
+#front_page {
+  background-color: seashell;
+}
+
+.heart{
+  color: black; 
+  cursor: pointer;
+}
+.heart.red{
+  color: red;
+  cursor: pointer;
+}
+.heart:hover, .liked-heart:hover{
+  color:yellow;
+}
+
+.liked-heart{
+  color: red;
+  cursor: pointer;
+}
+.liked-heart.black{
+  color: black;
+  cursor: pointer;
+}
 
 .thumbnail img{
   max-height: 200px;
@@ -14,16 +38,39 @@
 .pos{
   text-align: center;
   padding: 2vh;
-  margin: 0.2vh;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 .hotel_name{
-  font-family: Lobster;
-  font-weight: 400;
-  color: blueviolet;  
+  font-family: Vibur;
+  font-weight: bold;
+  color:tomato;  
 }
 .thumbnail .btn{
   font-family: Oleo Script;
 }
 #signup{
   text-align: center;
+}
+
+#bigCallOut{
+  position: relative;
+  margin-top: 2vh;
+  text-align: center;
+}
+#bigCallOut .lead{
+  font-family: Leckerli One;
+}
+#bigCallOut p{
+  font-family: Pacifico;
+}
+#bigCallOut .well{
+  font-family: Sacramento;
+}
+#bigCallOut small{
+  font-family: Arizonia;
+  text-decoration:underline  coral double;
+}
+.well{
+  text-align: justify;
 }

@@ -20,6 +20,7 @@
     "express-session": "^1.15.6",
     "express-validator": "^5.0.3",
     "hbs": "~4.0.1",
+    "materialize-css": "^0.100.2",
     "mongodb": "^3.0.4",
     "mongoose": "^5.0.9",
     "mongoose-currency": "^0.2.0",

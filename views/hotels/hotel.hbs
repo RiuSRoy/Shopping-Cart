@@ -1,0 +1,121 @@
+
+<div style="text-align:center;margin:2vh;">
+    <h1 style=" color :goldenrod; font-family:Great Vibes;">
+        {{hotel.title}}
+        {{# if login}}
+            {{# if hasLiked}}
+                <form action="/hotels/{{hotel._id}}" method="POST">
+                    <input type="hidden" name="userApna" value={{userId}}>
+                    <button type="submit" class="liked-heart btn blue "><i class="fa fa-heart"></i></button>
+                </form> 
+            {{else}}
+                <form action="/hotels/{{hotel._id}}" method="POST">
+                    <input type="hidden" name="userApna" value={{userId}}>
+                    <button type="submit" class="heart btn blue pulse"><i class="fa fa-heart"></i></button>
+                </form> 
+            {{/if}}
+        {{/if}}
+    </h1>
+</div>
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <img src={{hotel.imagePath}} class="img-responsive img-rounded img-thumbnail z-depth-5">
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div style="font-weight: bold;">
+            <h2 style="font-family : Pacifico"></h2>
+            <h3 style="font-family:cursive;">{{hotel.description}}</h3>
+            <h4>Price : {{hotel.price}}</h4>
+            {{# if login}}
+                <a href='/hotels/book/{{hotel._id}}' class="btn cyan pulse" role="button">Book My Stay </a>
+            {{else}}
+                <a href='/user/signin' class="btn btn-danger red pulse" role="button">Login to book your stay!</a>
+            {{/if}}
+        </div>
+    </div>    
+</div>
+<div>
+    <span>{{hotel.reacts}}</span>
+    <span><i class="fas fa-thumbs-up" style="font-size:50px"></i></span>
+</div>
+</div>
+
+<div class="row" id = "bigCallOut">
+    <div class="col-12">
+        <div class="alert alert-success alert-block " id="successAlert">
+            <button id="close">X</button>
+            <span><h4>Thank You!</h4>
+            <p>We appreciate your sparing time to review us!</p></span>
+            <span><img src="/images/namaste.png" width="6%" height="6%"></span>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="well">
+            <div class="page-header">
+                <h1>REVIEWS :: <small>Your feedback matters a lot to us!</small></h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+{{# if login}}
+<form action="/hotels/review/{{hotel._id}}" method="POST">
+    <div class="container-fluid"></div>
+    <div class="row">
+        <div class="input-field col-lg-10 col-md-10 col-sm-10 col-xs-12">
+            <label for="review">Tell us about your stay in a tweet!</label>
+            <textarea name="review" class="materialize-textarea" length = "140"></textarea>
+
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+            <button class="btn black waves-effect waves-light" type="submit" style="color:chartreuse">POST
+                <i class="fa fa-paper-plane " style="color:red" aria-hidden="true"></i>
+            </button>
+        </div>  
+    </div>  
+    </div>   
+</form>
+{{/if}}
+</div>
+
+
+<ul>
+    {{#each hotel.review}}
+        <li>{{this.comment}}</li>
+        <li><small>{{this.author}}</small></li>
+    {{/each}}
+</ul>
+
+
+
+
+
+<!--<div class="row" id="bigCallOut">
+    <div class="col-12">
+        <div class="alert alert-success alert-block " id="successAlert">
+            <button id="close">X</button>
+            <span><h4>Thank You!</h4>
+            <p>We appreciate your sparing time to review us!</p></span>
+            <span><img src="/images/namaste.png" width="6%" height="6%"></span>
+        </div>
+        <div class="well">
+            <div class="page-header">
+                <h1>REVIEWS :: <small>Your feedback matters a lot to us!</small></h1>
+            </div>
+            <form>
+                <div class="row">
+                    <div class="col-11">
+                        <div class="form-group">
+                            <input type="string" class="form-control" id="exampleInputEmail1" placeholder="Review us">
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <a href="#successAlert"><button type="submit"  id="like" class="btn btn-default">POST</button></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>-->

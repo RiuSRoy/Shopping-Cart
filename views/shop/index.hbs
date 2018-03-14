@@ -1,16 +1,16 @@
-<div class="container-fluid">
-{{# each products}}   
-  <div class="row">
+{{# each hotelrow}}   
+  <div class="row" id="front_page">
     {{# each this}}
       <div class="col-sm-12 col-md-6 col-lg-3">
-        <div class="thumbnail pos">
-          <img src={{this.imagePath}} class="img-responsive img-thumbnail">
+        <div class="thumbnail pos card-panel hoverable">
+          <img src={{this.imagePath}} class="responsive-img circle  hoverable">
           <div class="caption">
             <h3 class="hotel_name">{{this.title}}</h3>
             <p class="description">{{this.description}}</p>
+            <hr></hr>
             <div class="clearfix"> 
                 <div class="price pull-left">{{this.price}}</div>
-              <a href="#" class="btn btn-success pull-right" role="button">View Deal &raquo;</a>
+              <a href='/hotels/{{this._id}}' class="btn btn-success pull-right" role="button">View Deal &raquo;</a>
             </div>
           </div>
         </div>
@@ -18,4 +18,3 @@
     {{/each}}
   </div>
 {{/each}}
-</div>-->

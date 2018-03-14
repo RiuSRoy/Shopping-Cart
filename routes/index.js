@@ -10,8 +10,8 @@ router.get('/', function(req, res, next) {
     for(var i = 0;i < docs.length ; i+=4){
       productChunks.push(docs.slice(i,i+4));
     }
-    res.render('shop/index', { title: 'Shopping Cart',products : productChunks });
+    var cnt = 5;
+    res.render('shop/index', {hotelrow : productChunks , cnt : cnt});
   });  
 });
-
 module.exports = router;
