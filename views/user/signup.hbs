@@ -1,35 +1,45 @@
-<div class="container-fluid">
-    <div class="row">
-    <div class="col-4 col-offset-4">
-        <h1>Sign Up</h1>
-        {{# if hasErrors}}
-            <div class="alert alert-danger">
-                {{# each messages}}
-                    <p>{{this}}</p>
-                {{/each}}
+    <div class="container"  id="sign_up" >
+        <div class="row">
+        <div class="col-12">
+            <h1 style="color:saddlebrown;text-shadow:2px 2px 2px yellow; font-size: 6vh;">Sign Up</h1>
+            <div id="anime">
+                <div class="el">
+                </div>
+                <div class="el">
+                </div>
+                <div class="el">
+                </div>
             </div>
-        {{/if}}
-        <form action="/user/signup" method="POST">
-            <div class="input-field">
-                <label for="email">E-mail</label>
-                <input type="text" id="email" name="email" class="validate">
-            </div>
-            <div class="input-field">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" class="validate">
-            </div>
-            <div class="input-field">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" class="validate">
-            </div>
-            <div class="form-group">
-                <label for="dp">Upload a profile picture</label>
-                <input type="file" id="dp" name="dp">
-                <!--<p class="help-block">Example block-level help text here.</p>-->
-            </div>
-            <!--<input type="hidden" name="_csrf" value="{{csrfToken}}">-->
-            <button type="submit" class="btn btn-primary">Sign Up</button>
-        </form>
+            
+    
+            {{# if hasErrors}}
+                <div class="alert alert-danger">
+                    {{# each messages}}
+                        <p>{{this}}</p>
+                    {{/each}}
+                </div>
+            {{/if}}
+            <form action="/user/signup" method="POST">
+                <div class="input-field">
+                    <label for="email">E-mail</label>
+                    <input type="text" id="email" name="email" class="validate">
+                </div>
+                <div class="input-field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" class="validate">
+                </div>
+                <div class="input-field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="validate">
+                </div>
+                <div class="form-group">
+                    <label for="dp">Upload a profile picture</label>
+                    <input type="file" id="dp" name="dp">
+                </div>
+                <button type="submit" class="btn red waves-effect">Sign Up</button>
+            </form>
+        </div>
     </div>
-</div>
-</div>
+    </div>
+
+

@@ -1,8 +1,46 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-3">
-            <h1>{{user.email}}</h1>
-            
-        </div>
+<div class="wrapper hide-on-med-and-down">
+    <div class="one">
+        <h1>{{user.username}}</h1>
     </div>
+    
+    <div class="two">
+        <h3>Your Upcoming / Live bookings</h3>
+        <ul>
+            {{# if liveBookings.length}} 
+                {{# each liveBookings}}
+                    <li style="list-style-type: square;">{{this.hotel}} {{this.beginDate}} {{this.endDate}}</li><hr>
+                {{/each}}
+            {{else}}
+                No bookings on the cards!
+            {{/if}}
+        </ul>
+    </div>
+    <div class="three" class="row">
+        <div class="col-12">
+            <h3>MY WISHLIST</h3>
+            <ul>
+                {{# if user.wishlist.length}}
+                    {{#each user.wishlist}}
+                        <li style="list-style-type: circle;">{{this}}</li><hr>
+                    {{/each}}
+                {{else}}
+                    No hotels in your wishlist!
+                {{/if}}
+            </ul>
+        </div>
+        
+    </div>
+    <div class="four">
+        <h3>Your Booking history</h3>
+        <ul>
+            {{# if expiredBookings.length}}
+                {{# each expiredBookings}}
+                    <li style="list-style-type: square;">{{this.hotel}} {{this.beginDate}} {{this.endDate}}</li><hr>
+                {{/each}}
+            {{else}}
+                Your record shows no bookings ! 
+            {{/if}}
+        </ul>
+    </div>
+    
 </div>

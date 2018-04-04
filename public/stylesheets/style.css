@@ -1,6 +1,5 @@
-#front_page {
-  background-color: seashell;
-}
+
+
 
 .heart{
   color: black; 
@@ -23,11 +22,12 @@
   cursor: pointer;
 }
 
-.thumbnail img{
+.pos img{
+  height: 200px;
   max-height: 200px;
 }
 
-.thumbnail .description{
+.pos .description{
   color : #a11a08; 
   font-family: Sofia;
 }
@@ -38,15 +38,13 @@
 .pos{
   text-align: center;
   padding: 2vh;
-  margin-right: 0px;
-  margin-left: 0px;
 }
 .hotel_name{
-  font-family: Vibur;
-  font-weight: bold;
-  color:tomato;  
+  font-family: Righteous;
+  color:rgb(17, 20, 163);
+  text-shadow:2px 2px 3px  aqua;  
 }
-.thumbnail .btn{
+.pos .btn{
   font-family: Oleo Script;
 }
 #signup{
@@ -74,3 +72,307 @@
 .well{
   text-align: justify;
 }
+.nav-wrapper{
+  background: rgb(173, 14, 221) !important;
+}
+.nav-wrapper a{
+  background: linear-gradient(to bottom,
+                              rgba(245, 245, 239, 0) 0%,
+                              rgba(244, 242, 245, 0) 50%,
+                              rgb(238, 238, 235) 50%,
+                              rgb(243, 242, 238) 100%);
+  background-size: 100% 200%;
+  transition: all 0.5s ease-out;
+  border-bottom: none;
+  font-family: Caveat Brush;
+  font-size: 3vh;
+}
+.nav-wrapper a:hover{
+  background-position: 0% 100%;
+}
+
+.deal:hover {
+  color:yellow;
+}
+
+.webmadewell {
+  background-color: white;
+}
+body {
+  margin: 0;
+}
+.sample-header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: auto;
+  background-image: url("https://pixabay.com/get/e83db7082afc043ecd1f4307e6454190e66ae3d01bb3174493f0c87e/beach-1867285.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.sample-header-section {
+  text-align: center;
+  position: relative;
+  padding: 15% 0 10%;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  font-family: "Montserrat", sans-serif;
+}
+.sample-section {
+  position: relative;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px;
+  font: bold 3vh Niconne;
+  background-color: rgb(156, 151, 78);
+}
+
+.sample-header-section h1 ,h2{
+  font: bold 6vh;
+  background-color: white;
+  color: transparent;
+  text-shadow: 2px 2px 3px rgba(red, green, blue, 0.5);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
+}
+
+/* profile page*/
+.wrapper{
+  display: grid;
+  grid-template-columns: repeat(1,1fr 1fr);
+  grid-gap: 1em;
+  grid-auto-rows: minmax(100px,auto);
+  grid-auto-columns: minmax(100px,auto);
+}
+.one {
+  background-color: #720017;
+  grid-column: 1/2;
+  grid-row: 1/4;
+  padding: 1em;
+}
+.one h1{
+  font-family: Audiowide;
+  color: #EDD170;
+  font-size: 3em;
+}
+.two {
+  background: #525915;
+  grid-column: 2/7;
+  grid-row: 1/4;
+  padding: 1.5vw;
+  color: white;
+  height: 350px;
+  overflow-y: scroll;
+  font:bold 6vh Tangerine;
+}
+.two h3 , .four h3{
+  font-family:  Fredoka One , cursive;
+}
+
+.three {
+  background: #EDD170;
+  grid-column: 4/7;
+  grid-row: 4/7;
+  overflow: auto;
+  padding: 1em;
+
+}
+.three h3{
+  font-family: cursive;
+  font-weight : 2vh;
+  text-align: center;
+}
+.four {
+  background:  #F22F08;
+  grid-column: 1/4;
+  grid-row:4/7;
+  padding: 1em;
+  color: white;
+  font-size: 3vh;
+  height: 350px;
+  overflow-y: scroll;
+  font:bold 6vh Tangerine;
+}
+
+
+
+.modal-title{
+  font-family: Sofia;
+    font-size: 3vw;
+}
+
+.hand{
+  font-family: Sacramento;
+  font-weight: bold;
+  font-size: 4vh;
+  color: gainsboro;
+  background-color: black;
+}
+
+.table_body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: mediumblue;
+}
+
+
+/*main page*/
+.main_wrapper{
+	height: 100%;
+	margin: 0;
+	font-size: 16px;
+	font-family: Oleo Script,cursive;
+	font-weight: 400;
+	line-height: 1.8em;
+	color: #666;
+}
+.pimg1, .pimg2, .pimg3{
+	position: relative;;
+	opacity: 0.70;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	
+	/*fixed = parallax
+	scroll = normal*/	
+	background-attachment: fixed;
+}
+
+.pimg1{
+  opacity: 1;
+	background-image: url('../images/img1.jpeg');
+	min-height: 650px;
+}
+.pimg2{
+	background-image: url('../images/img2.jpg');
+	min-height: 400px;
+}
+.pimg3{
+	background-image: url('../images/img3.jpeg');
+	min-height: 400px;
+}
+
+.section{
+	text-align: center;
+	padding: 50px 80px;
+}
+
+.section-light{
+	background-color: #f4f4f4;
+	color: #666;
+}
+
+.section-dark{
+	background-color: #282e34;
+	color: #ddd;
+}
+
+.ptext{
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	text-align: center;
+	color: #000;
+	font-size: 5vh;
+	letter-spacing: 1vw;
+	text-transform: uppercase;
+}
+
+.ptext .border{
+	background-color: #111;
+	color: #fff;
+	padding: 20px;
+	opacity: 0.7;
+	font-family: Monoton;
+}
+
+@media(max-width: 568px){
+	.pimg1,.pimg2,.pimg3{
+		background-attachment: scroll;
+	}
+}
+
+#particles-js{
+ background-color: black;
+ height: 700px;
+ width: 100%;
+ background-size: contain;
+}
+#login{
+  position: absolute;
+  top: 20%;
+  left:25%;
+  right: 25%;
+  background-color: black;
+  color: white;
+  font-family:cursive;
+  width: 50%;
+}
+
+#sign_up{
+  position: absolute;
+  font-family:cursive;
+  top: 20%;
+  left:20%;
+  right: 20%;
+  font-family:cursive;
+  width: 60%;
+}
+#anime .el{
+  border-radius: 2em;
+  background: black;
+  height: 15px;
+  width: 15px;
+  top: 15%;
+}
+#anime3{
+  border-radius: 2em;
+  background: black;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+}
+#anime1{
+  border-radius: 2em;
+  background: black;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 9.5%;
+}
+
+#anime4{
+  border-radius: 2em;
+  background: black;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  bottom: 0%;
+}
+
+
+
+#booking_page{
+  font-size: 2em;
+  font-family: cursive;
+  margin-top: -50px;
+}
+
+#comments{
+  font-size: 2em;
+  font-family: cursive;
+  font-weight: bold;
+  border: 2px darkslategrey dashed;
+  margin-bottom: 6vh;
+}
+
+
+

@@ -1,84 +1,106 @@
-{{# if vacancy}}
+<div class="container" id="booking_page">
+{{# if hotel.vacancy}}
 <div class="container-fluid">
   <div class="row">
-    <form class="col-12"  action="" method="POST">
+    <form class="col-12"  action="/hotels/book/{{hotel._id}}" method="POST">
       <div class="row">
         <div class="input-field col-12">
-          <input placeholder="Name of the person for whom the booking is done" id="name" type="text" class="validate">
-          <label for="na
-          me">FULL NAME</label>
+          <input placeholder="Name of the person for whom the booking is done" type="text" class="validate" name="name" required=true>
+          <label for="name">FULL NAME</label>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col-6">
-          <select>
-            <option value="" disabled selected>Choose event type</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
+        <div class="input-field col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <select id="dropdown" onchange="myFunc()" required=true>
+            <option value="" disabled selected>Choose room type</option>
+            <option value={{hotel.rooms.stnSGLac.rooms_left}} name="s1">Standard SGL (AC)</option>
+            <option value={{hotel.rooms.stnSGLno.rooms_left}} name="s1n">Standard SGL (Non-AC)</option>
+            <option value={{hotel.rooms.stnDBLac.rooms_left}} name="s2">Standard DBL (AC)</option>
+            <option value={{hotel.rooms.stnDBLno.rooms_left}} name="s2n">Standard DBL (Non-AC)</option>
+            <option value={{hotel.rooms.stnTPLac.rooms_left}} name="s3">Standard TPL (AC)</option>
+            <option value={{hotel.rooms.stnTPLno.rooms_left}} name="s3n">Standard TPL (Non-AC)</option>
+            <option value={{hotel.rooms.delSGL.rooms_left}} name="d1">Deluxe SGL</option>
+            <option value={{hotel.rooms.delDBL.rooms_left}} name="d2">Deluxe DBL</option>
+            <option value={{hotel.rooms.delfam.rooms_left}} name="d3">Deluxe TPL</option>
+            <option value={{hotel.rooms.preSut.rooms_left}} name="p">Presidential Suite</option>
+            <option value={{hotel.rooms.execSut.rooms_left}} name="e">Executive Suite</option>
+            <option value={{hotel.rooms.honSut.rooms_left}} name="h">Honeymoon Suite</option>
           </select>
-          <label>Event type</label>
+          <label>Room type</label>
         </div>
-        <div class="input-field col-6">
-          <select multiple>
-            <option value="" disabled selected>Choose style(s)</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-          </select>
-          <label>Styles</label>
+        <div class="input-field col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <input placeholder="e.g., 3" type="number" min="1" class="validate" name="no_of_rooms" id="no_of_rooms" required=true>
+          <label>No. of rooms</label>
         </div>
       </div>
 
       <div class="row">
-        <div class="input-field col-6">
+        <div class="input-field col-lg-6 col-md-12 col-sm-12 col-xs-12">
           <label>Begin date</label>
-          <input id="beginDate" type="date" class="datepicker">
+          <input id="beginDate" type="date" class="datepicker" name="beginDate"required=true>
           
         </div>
-        <div class="input-field col-6">
+        <div class="input-field col-lg-6 col-md-12 col-sm-12 col-xs-12">
           <label>End date</label>
-          <input id="endDate" type="date" class="datepicker">
-          
+          <input id="endDate" type="date" class="datepicker" name="endDate" required=true>          
         </div>
       </div>
-      <div class="row">
-        <div class="input-field col-12">
-          <input placeholder="Who is organizing the event?" id="organizer" type="text" class="validate">
-          <label for="organizer">Organizer</label>
+      <div class="row" id="yo">
+        <div class="input-field col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <input placeholder="8253949042" type="text" class="validate" name="phone" required=true>
+          <label for="phone">Contact Number</label>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col-6">
-          <input placeholder="http://www.mywebsite.com" id="website" type="text" class="validate">
-          <label for="website">Website</label>
-        </div>
-        <div class="input-field col-6">
-          <input placeholder="contact@myweb.com" id="email" type="text" class="validate">
+        <div class="input-field col-lg-6  col-md-12 col-sm-12 col-xs-12">
+          <input placeholder="contact@myweb.com" type="email" class="validate" name="email" required=true>
           <label for="email">Contact email</label>
         </div>
       </div>
-
-      <div class="row">
-            <div class="input-field col-12">
-              <textarea id="description" class="materialize-textarea" length="140"></textarea>
-              <label for="description">Describe the event in a tweet!</label>
-            </div>
-          </div>
+      <!--<p id="demo"></p>-->
+      <button type="submit" class="btn">Lock it!</button>
     </form>
   </div>
 </div>
-
 {{else}}
-  <dialog>
-      <div class="container-fluid">
-        <div class="row">
-          <h1>Oops!...bookings are full!</h1>
-  <h3>We look forward to serve you some other day!</h3>
-      </div>
+    <div class="container-fluid">
+      <div class="row">
+        <h1>Oops!...bookings are full!</h1>
+<h3>We look forward to serve you some other day!</h3>
     </div>
-  </dialog>
-  
-  
-  
+  </div>  
 {{/if}}
+</div>
+
+<script>
+  function myFunc() {
+    var p = $("#dropdown option:selected").val();
+    document.getElementById("no_of_rooms").max = p;
+    var q = $("#dropdown option:selected").text();
+    switch(q) {
+      case "Standard SGL (AC)" : $("#yo").append("<input type='hidden' name = 'room_id' value = 's1'>");
+      break;
+      case "Standard SGL (Non-AC)" : $("#yo").append("<input type='hidden' name = 'room_id' value = 's1n'>");
+      break;
+      case "Standard DBL (AC)" : $("#yo").append("<input type='hidden' name = 'room_id' value = 's2'>");
+      break;
+      case "Standard DBL (Non-AC)" : $("#yo").append("<input type='hidden' name = 'room_id' value = 's2n'>");
+      break;
+      case "Standard TPL (AC)" : $("#yo").append("<input type='hidden' name = 'room_id' value = 's3'>");
+      break;
+      case "Standard TPL (Non-AC)" : $("#yo").append("<input type='hidden' name = 'room_id' value = 's3n'>");
+      break;
+      case "Deluxe SGL" : $("#yo").append("<input type='hidden' name = 'room_id' value = 'd1'>");
+      break;
+      case "Deluxe DBL" : $("#yo").append("<input type='hidden' name = 'room_id' value = 'd2'>");
+      break;
+      case "Deluxe TPL" : $("#yo").append("<input type='hidden' name = 'room_id' value = 'd3'>");
+      break;
+      case "Presidential Suite" : $("#yo").append("<input type='hidden' name = 'room_id' value = 'p'>");
+      break;
+      case "Executive Suite" : $("#yo").append("<input type='hidden' name = 'room_id' value = 'e'>");
+      break;
+      case "Honeymoon Suite" : $("#yo").append("<input type='hidden' name = 'room_id' value = 'h'>");
+      break;
+    }
+    
+  }
+</script>

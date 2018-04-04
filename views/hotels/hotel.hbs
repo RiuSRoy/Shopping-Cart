@@ -26,7 +26,125 @@
         <div style="font-weight: bold;">
             <h2 style="font-family : Pacifico"></h2>
             <h3 style="font-family:cursive;">{{hotel.description}}</h3>
-            <h4>Price : {{hotel.price}}</h4>
+            <h4>Starting Price : {{hotel.price}}</h4>
+            <button type="button" class="btn green" data-toggle="modal" data-target="#myModal">Tariff Chart</button>
+            <hr>
+            <div class="modal fade " id="myModal" role="dialog">
+                <div class="modal-dialog  modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title">ROOM TARIFF</h1>
+                        </div>
+                        <div class="modal-body">
+                            <div class="table-responsive">
+                                    <table class="table-bordered">
+                                    <thread>
+                                        <tr class="hand">
+                                            <th>Room Type</th>
+                                            <th>AC</th>
+                                            <th>Non-AC</th>
+                                        </tr>                                    
+                                    </thread>
+                                    <tbody class="table_body">
+                                        <tr>
+                                            <td>Standard Single</td>
+                                            {{# if hotel.rooms.stnSGLac.fare}}
+                                                <td>{{hotel.rooms.stnSGLac.fare}}</td>
+                                            {{else}}
+                                                <td style="text-align:center">-</td>
+                                            {{/if}}
+                                            {{# if hotel.rooms.stnSGLno.fare}}
+                                                <td>{{hotel.rooms.stnSGLno.fare}}</td>                                        
+                                            {{else}}
+                                                <td style="text-align:center">-</td>
+                                            {{/if}}
+                                        </tr>
+                                        <tr>
+                                            <td>Standard Double</td>
+                                            {{# if hotel.rooms.stnDBLac.fare}}
+                                                <td>{{hotel.rooms.stnDBLac.fare}}</td>
+                                            {{else}}
+                                                <td style="text-align:center">-</td>
+                                            {{/if}}
+                                            {{# if hotel.rooms.stnDBLno.fare}}
+                                                <td>{{hotel.rooms.stnDBLno.fare}}</td>
+                                            {{else}}
+                                                <td style="text-align:center">-</td>
+                                            {{/if}}
+                                        </tr>
+                                        <tr>
+                                            <td>Standard Triple</td>
+                                            {{# if hotel.rooms.stnTPLac.fare}}
+                                            <td>{{hotel.rooms.stnTPLac.fare}}</td>
+                                            {{else}}
+                                                <td style="text-align:center">-</td>
+                                            {{/if}}
+                                            {{# if hotel.rooms.stnTPLno.fare}}
+                                                <td>{{hotel.rooms.stnTPLno.fare}}</td>
+                                            {{else}}
+                                                <td style="text-align:center">-</td>
+                                            {{/if}}
+                                        </tr>
+                                        <tr>
+                                            <td>Deluxe Single</td>
+                                            {{# if hotel.rooms.delSGL.fare}}
+                                                <td>{{hotel.rooms.delSGL.fare}}</td>
+                                            {{else}}
+                                                <td style="text-align:center">-</td>
+                                            {{/if}}
+                                        </tr>
+                                        <tr>
+                                            <td>Deluxe Double</td>
+                                            {{# if hotel.rooms.delDBL.fare}}
+                                                <td>{{hotel.rooms.delDBL.fare}}</td>
+                                            {{else}}
+                                                <td style="text-align:center">-</td>
+                                            {{/if}}
+                                        </tr>
+                                        <tr>
+                                            <td>Deluxe Family</td>
+                                            {{# if hotel.rooms.delfam.fare}}
+                                                <td>{{hotel.rooms.delfam.fare}}</td>
+                                            {{else}}
+                                                <td style="text-align:center">-</td>
+                                            {{/if}}
+                                        </tr>
+                                        <tr>
+                                            <td>Presidential Suite</td>
+                                            {{# if hotel.rooms.preSut.fare}}
+                                                <td>{{hotel.rooms.preSut.fare}}</td>
+                                            {{else}}
+                                                <td style="text-align:center">-</td>
+                                            {{/if}}
+                                        </tr>
+                                        <tr>
+                                            <td>Executive Suite</td>
+                                            {{# if hotel.rooms.execSut.fare}}
+                                                <td>{{hotel.rooms.execSut.fare}}</td>
+                                            {{else}}
+                                                <td style="text-align:center">-</td>
+                                            {{/if}}
+                                        </tr>
+                                        <tr>
+                                            <td>HoneyMoon Suite</td>
+                                            {{# if hotel.rooms.honSut.fare}}
+                                                <td>{{hotel.rooms.honSut.fare}}</td>
+                                            {{else}}
+                                                <td style="text-align:center">-</td>
+                                            {{/if}}
+                                        </tr>  
+                                    </tbody>
+                                </table>
+                                <p><small class="text-muted hand" style="background:white;">Check out time: 12 p.m.</small>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn purple" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {{# if login}}
                 <a href='/hotels/book/{{hotel._id}}' class="btn cyan pulse" role="button">Book My Stay </a>
             {{else}}
@@ -40,6 +158,7 @@
     <span><i class="fas fa-thumbs-up" style="font-size:50px"></i></span>
 </div>
 </div>
+
 
 <div class="row" id = "bigCallOut">
     <div class="col-12">
@@ -70,23 +189,23 @@
 
         </div>
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-            <button class="btn black waves-effect waves-light" type="submit" style="color:chartreuse">POST
-                <i class="fa fa-paper-plane " style="color:red" aria-hidden="true"></i>
+            <button class="btn waves-effect waves-light" id="like" type="submit">POST<i class="fa fa-paper-plane " style="color:red" aria-hidden="true"></i>
             </button>
         </div>  
     </div>  
     </div>   
 </form>
 {{/if}}
+
+
+<div class="container" id="comments">
+    <ul>
+        {{#each hotel.review}}
+            <li>{{this.author}}: <small>{{this.comment}}</small></li><hr>
+        {{/each}}
+    </ul>
 </div>
 
-
-<ul>
-    {{#each hotel.review}}
-        <li>{{this.comment}}</li>
-        <li><small>{{this.author}}</small></li>
-    {{/each}}
-</ul>
 
 
 
