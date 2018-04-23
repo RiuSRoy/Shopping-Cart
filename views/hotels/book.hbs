@@ -55,7 +55,7 @@
           <label for="email">Contact email</label>
         </div>
       </div>
-      <!--<p id="demo"></p>-->
+      <input id="hoho" value="" name="room_id">
       <button type="submit" class="btn">Lock it!</button>
     </form>
   </div>
@@ -76,29 +76,29 @@
     document.getElementById("no_of_rooms").max = p;
     var q = $("#dropdown option:selected").text();
     switch(q) {
-      case "Standard SGL (AC)" : $("#yo").append("<input type='hidden' name = 'room_id' value = 's1'>");
+      case "Standard SGL (AC)" : $("#hoho").val("s1");
       break;
-      case "Standard SGL (Non-AC)" : $("#yo").append("<input type='hidden' name = 'room_id' value = 's1n'>");
+      case "Standard SGL (Non-AC)" : $("#hoho").val("s1n");
       break;
-      case "Standard DBL (AC)" : $("#yo").append("<input type='hidden' name = 'room_id' value = 's2'>");
+      case "Standard DBL (AC)" : $("#hoho").val("s2");
       break;
-      case "Standard DBL (Non-AC)" : $("#yo").append("<input type='hidden' name = 'room_id' value = 's2n'>");
+      case "Standard DBL (Non-AC)" : $("#hoho").val("s2n");
       break;
-      case "Standard TPL (AC)" : $("#yo").append("<input type='hidden' name = 'room_id' value = 's3'>");
+      case "Standard TPL (AC)" : $("#hoho").val("s3");
       break;
-      case "Standard TPL (Non-AC)" : $("#yo").append("<input type='hidden' name = 'room_id' value = 's3n'>");
+      case "Standard TPL (Non-AC)" : $("#hoho").val("s3n");
       break;
-      case "Deluxe SGL" : $("#yo").append("<input type='hidden' name = 'room_id' value = 'd1'>");
+      case "Deluxe SGL" : $("#hoho").val("d1");
       break;
-      case "Deluxe DBL" : $("#yo").append("<input type='hidden' name = 'room_id' value = 'd2'>");
+      case "Deluxe DBL" : $("#hoho").val("d2");
       break;
-      case "Deluxe TPL" : $("#yo").append("<input type='hidden' name = 'room_id' value = 'd3'>");
+      case "Deluxe TPL" : $("#hoho").val("d3");
       break;
-      case "Presidential Suite" : $("#yo").append("<input type='hidden' name = 'room_id' value = 'p'>");
+      case "Presidential Suite" : $("#hoho").val("p");
       break;
-      case "Executive Suite" : $("#yo").append("<input type='hidden' name = 'room_id' value = 'e'>");
+      case "Executive Suite" : $("#hoho").val("e");
       break;
-      case "Honeymoon Suite" : $("#yo").append("<input type='hidden' name = 'room_id' value = 'h'>");
+      case "Honeymoon Suite" : $("#hoho").val("h");
       break;
     }
     

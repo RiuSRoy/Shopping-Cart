@@ -188,7 +188,7 @@ hotelRouter.route('/book/:hotelId',isLoggedIn)
 			return next(err);
         }
         else {
-            for(var i = 0;i < hotel.bookings.length ; ++i) {
+           /* for(var i = 0;i < hotel.bookings.length ; ++i) {
                 if(hotel.bookings[i].endDate < new Date()) {
                     if(hotel.bookings[i].roomType == 's1') {
                         counter = hotel.rooms.stnSGLac.rooms_left;
@@ -288,7 +288,8 @@ hotelRouter.route('/book/:hotelId',isLoggedIn)
                     hotel.bookings.splice(i , 1);
                 }
             }
-            hotel.save()
+            */
+            Hotels.findByIdAndUpdate(req.params.hotelId, hotel)
             .then((hotel) => {
                 res.render( 'hotels/book' , {hotel : hotel, userId : req.user._id});
             } , (err)=>console.log(err))
@@ -305,6 +306,7 @@ hotelRouter.route('/book/:hotelId',isLoggedIn)
     var endDate = req.body.endDate;
     var phone = req.body.phone;
     var email = req.body.email;
+    var counter=0;
     Users.findById(req.user._id)
     .then((user) => {
         if(user == null) {
@@ -321,16 +323,18 @@ hotelRouter.route('/book/:hotelId',isLoggedIn)
                     return next(err);
                 }
                 else {
-                    if(roomType == "s1") {
+                    if(roomType === "s1") {
                         counter = hotel.rooms.stnSGLac.rooms_left;
                         if(counter == null || counter == NaN) {
                             counter = 0;
                         }
+                        console.log("harsh "+counter);
+                        console.log("harsh "+no_of_rooms);
                         counter -= no_of_rooms;
                         hotel.rooms.stnSGLac.rooms_left = counter;
-                        console.log(counter);
+                        console.log(hotel.rooms.stnSGLac.rooms_left);
                     }
-                    else if(roomType == "s1n") {
+                    else if(roomType === "s1n") {
                         counter = hotel.rooms.stnSGLno.rooms_left;
                         if(counter == null || counter == NaN) {
                             counter = 0;
@@ -433,13 +437,17 @@ hotelRouter.route('/book/:hotelId',isLoggedIn)
                         hotel : hotel.title ,
                         no_of_rooms : no_of_rooms,
                         roomType : roomType
-                    });   
-                    hotel.save()
-                    .then((hotel) => {               
+                    });
+                    console.log("harsh "+hotel.rooms.stnSGLac.rooms_left);
+                    Hotels.findByIdAndUpdate(req.params.hotelId,hotel)
+                    .then((hotel) => { 
+                        console.log(hotel);
                         user.save()
                         .then( (user) => {
+                            console.log(hotel);  
                             res.statusCode=200;
-                            //res.json(hotel);
+                          //res.json(hotel);
+                            res.location('/hotels/'+hotel._id);
                             res.redirect('/hotels/'+hotel._id);
                         } , (err) => console.log(err))
                         .catch( (err) => console.log(err));
