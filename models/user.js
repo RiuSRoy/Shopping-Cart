@@ -12,11 +12,13 @@ var bookingDetails = new Schema({
     roomType : {type : String}
 });
 var userSchema = new Schema({
-    email : {type: String , required : true},
-    username : {type :String,required:true},
-    password : {type : String , required : true},
+    email : {type: String ,required : true},
+    username : {type :String,required:true },
+    password : {type : String },
     bookings : [bookingDetails],
     wishlist : {type : Array},
+    admin : {type : Boolean , default : false},
+    thumbnail : {type:String , default : ""}
 });
 
 userSchema.methods.encryptPassword = (password) => {

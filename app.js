@@ -7,7 +7,6 @@ var expressHbs = require('express-handlebars');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var flash = require('connect-flash');
@@ -15,16 +14,20 @@ var mongo = require('mongodb');
 var validator = require('express-validator');
 var MongoStore = require('connect-mongo')(session);
 
-
+var keys = require('./config/keys');
 var index = require('./routes/index');
 var userRouter = require('./routes/user');
 var hotelRouter = require('./routes/hotels');
+const authRoutes = require('./routes/auth');
 //var users = require('./routes/users');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost:27017/shopping');
-require('./config/passport'); //will load the passport file and run through it
+mongoose.connect(keys.mongodb.MONGODB_URI , () => {
+  console.log('connected to mongodb!');
+});
+require('./config/passportLocal'); //will load the passport file and run through it
+require('./config/passportGoogle');
 
 
 // view engine setup
@@ -40,14 +43,16 @@ app.use(validator());
 app.use(cookieParser());
 
 app.use(session({
-  secret:'aindrila',
+  secret: keys.session.SECRET_KEY,
   resave:true,
   saveUninitialized : true,
   store : new MongoStore({mongooseConnection : mongoose.connection }),
-  cookie : { maxAge : 180 * 60 * 1000 }
+  cookie : { maxAge : 180 * 60 * 1000 },
 }));
 //Only after session is initialized, the following three lines can be used
 app.use(flash());
+
+
 app.use(passport.initialize()); 
 app.use(passport.session());  //stores the user
 
@@ -55,10 +60,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use( function(req,res,next){
   res.locals.login = req.isAuthenticated(); //login is now declared as a global variable
-  res.locals.session = req.session;   //session can accessed now from anywhere
+  res.locals.session = req.session;   //session can be now accessed from anywhere
   next();
 });
 
+app.use('/auth',authRoutes);
 app.use('/user',userRouter);
 app.use('/hotels',hotelRouter);
 app.use('/', index);
@@ -81,5 +87,3 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 module.exports = app;
-
-//hello

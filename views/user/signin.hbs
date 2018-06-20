@@ -1,4 +1,4 @@
-<div class="container"  id="particles-js">
+<div id="particles-js">
     <div class="row" id="login">
     <div class="col-12">
         <h1 style="color:Yellow;font-size: 6vh;">Sign In</h1>
@@ -12,13 +12,21 @@
         <form action="/user/signin" method="POST">
             <div class="input-field">
                 <label for="email">E-mail</label>
-                <input type="text" id="email" name="email" class="validate">
+                <input type="text" id="email" name="email" class="validate" required="true">
             </div>
             <div class="input-field">
                 <label for="password">password</label>
-                <input type="password" id="password" name="password" class="validate">
+                <input type="password" id="password" name="password" class="validate" required="true">
             </div>
-            <button type="submit" class="btn">Sign In</button>
+            <div class="form-actions">
+                <button type="submit" class="btn">Sign In</button>
+                <hr>
+            </div>  
+            <p class="form-actions">Or Connect with:</p>    
+            <br>
+            <main class="form-actions">
+                <a class="google-btn" href="/auth/google">Google+</a>
+            </main>
         </form>
     </div>
     <div class="col-12">

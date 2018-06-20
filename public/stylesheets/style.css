@@ -268,7 +268,7 @@ body {
 	color: #666;
 }
 
-.section-dark{
+.section-dark{ 
 	background-color: #282e34;
 	color: #ddd;
 }
@@ -298,9 +298,10 @@ body {
 	}
 }
 
+/*  sign_in    */
 #particles-js{
  background-color: black;
- height: 700px;
+ height: 100%;
  width: 100%;
  background-size: contain;
 }
@@ -312,8 +313,20 @@ body {
   background-color: black;
   color: white;
   font-family:cursive;
-  width: 50%;
 }
+.form-actions {
+  margin: 0;
+  background-color: transparent;
+  text-align: center;
+}
+.google-btn{
+  color: #fff;
+  font-size: 1.2em;
+  padding: 0.55em;
+  background: #ff5353;
+  margin: 100px;
+}
+/*sign_up */
 
 #sign_up{
   position: absolute;
