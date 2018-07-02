@@ -295,7 +295,14 @@ body {
 @media(max-width: 568px){
 	.pimg1,.pimg2,.pimg3{
 		background-attachment: scroll;
-	}
+  }
+}
+
+@media(max-width: 800px){
+
+  .clearfix{
+    font-size: 400px;
+  }
 }
 
 /*  sign_in    */

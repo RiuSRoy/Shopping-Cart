@@ -13,7 +13,6 @@ var flash = require('connect-flash');
 var mongo = require('mongodb');
 var validator = require('express-validator');
 var MongoStore = require('connect-mongo')(session);
-
 var keys = require('./config/keys');
 var index = require('./routes/index');
 var userRouter = require('./routes/user');
@@ -22,6 +21,7 @@ const authRoutes = require('./routes/auth');
 //var users = require('./routes/users');
 
 var app = express();
+
 
 mongoose.connect(keys.mongodb.MONGODB_URI , () => {
   console.log('connected to mongodb!');

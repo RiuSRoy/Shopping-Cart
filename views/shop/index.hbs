@@ -1,7 +1,7 @@
 {{# each hotelrow}}   
   <div class="row" id="front_page">
     {{# each this}}
-      <div class="col-sm-12 col-md-6 col-lg-3">
+      <div class="col-12 col-lg-6">
         <div class="pos card-panel hoverable">
           <img src={{this.imagePath}} class="responsive-img circle  hoverable">
           <div class="caption">
@@ -18,3 +18,20 @@
     {{/each}}
   </div>
 {{/each}}
+
+  <ul class="pagination">
+    <li class="disabled waves-effect">
+      <a href="#!">
+        <i class="material-icons">chevron_left</i>
+      </a>
+    </li>
+    {{# each pages}}
+      <li class="page-item waves-effect"><a class="page-link"  href="/hotels/page/{{this}}">{{this}}</a></li>
+    {{/each}}
+    <li class="waves-effect">
+      <a href="#!">
+        <i class="material-icons">chevron_right</i>
+      </a>
+    </li>
+  </ul>
+

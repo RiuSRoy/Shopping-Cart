@@ -146,7 +146,7 @@
                 </div>
             </div>
             {{# if login}}
-                <a href='/hotels/book/{{hotel._id}}' class="btn cyan pulse" role="button">Book My Stay </a>
+                <a href='/hotels/book/{{hotel._id}}' class="btn cyan pulse" role="button" id="book-button">Book My Stay </a>
             {{else}}
                 <a href='/user/signin' class="btn btn-danger red pulse" role="button">Login to book your stay!</a>
             {{/if}}
@@ -205,36 +205,3 @@
         {{/each}}
     </ul>
 </div>
-
-
-
-
-
-
-<!--<div class="row" id="bigCallOut">
-    <div class="col-12">
-        <div class="alert alert-success alert-block " id="successAlert">
-            <button id="close">X</button>
-            <span><h4>Thank You!</h4>
-            <p>We appreciate your sparing time to review us!</p></span>
-            <span><img src="/images/namaste.png" width="6%" height="6%"></span>
-        </div>
-        <div class="well">
-            <div class="page-header">
-                <h1>REVIEWS :: <small>Your feedback matters a lot to us!</small></h1>
-            </div>
-            <form>
-                <div class="row">
-                    <div class="col-11">
-                        <div class="form-group">
-                            <input type="string" class="form-control" id="exampleInputEmail1" placeholder="Review us">
-                        </div>
-                    </div>
-                    <div class="col-1">
-                        <a href="#successAlert"><button type="submit"  id="like" class="btn btn-default">POST</button></a>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>-->

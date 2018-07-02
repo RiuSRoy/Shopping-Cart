@@ -12,15 +12,46 @@ router.get('/about_us',(req,res,next) => {
   res.render('shop/about_us');
 })
 
-router.get('/hotels', function(req, res, next) {
-  //db.products.find()
-  Product.find( (err,docs)=>{
-    var productChunks = [];
-    for(var i = 0;i < docs.length ; i+=4){
-      productChunks.push(docs.slice(i,i+4));
+
+
+
+router.get('/hotels/page/:pageNo', function(req, res, next) {
+  
+  var pageNo = parseInt(req.params.pageNo);
+  var size = 4;
+  var query = {};
+  if(pageNo < 0 || pageNo === 0) {
+    response = {
+      "error" : true,
+      "message" : "invalid page number, should start with 1"
+    };
+    return res.json(response)
+  }
+  query.skip = size * (pageNo - 1) ; 
+  query.limit = size ;
+  Product.count({} , (err , totalCount) => {
+    if(err) {
+      response = {
+        "error" : true,
+        "message" : "Error fetching data!"
+      };
+      res.json(response);
     }
-    res.render('shop/index', {hotelrow : productChunks });
-  });  
+    else {
+      Product.find( {} , {} , query ,  (err,docs)=>{
+        var productChunks = [] , page = [];
+        for(var i = 0;i < docs.length ; i+=2){
+          productChunks.push(docs.slice(i,i+2));
+        }
+        var totalPages = Math.ceil(totalCount / size);
+        for(var i = 0; i < totalPages ; ++i) {
+          page.push(i+1);
+        }
+        res.render('shop/index', {hotelrow : productChunks , pages : page });
+      });  
+    }
+  });
+  
 });
 
 

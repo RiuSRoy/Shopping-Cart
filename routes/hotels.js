@@ -32,7 +32,7 @@ hotelRouter.route('/:hotelId')
             var hasLiked = 0;
             if(hotel.likers.indexOf(req.user._id)!=-1)
                 hasLiked = 1;
-            res.render('hotels/hotel' , {hotel : hotel, userId : req.user._id ,hasLiked : hasLiked});
+            res.render('hotels/hotel' , {hotel : hotel, userId : req.user._id ,hasLiked : hasLiked, username : req.user.username});
         }
         else {
             res.render('hotels/hotel' , {hotel : hotel});
