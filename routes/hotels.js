@@ -5,7 +5,7 @@ var Hotels = require('../models/product');
 var Users = require('../models/user');
 hotelRouter.use(bodyParser.json());
 
-
+//Learn to make a change
 //code to empty the database products
 hotelRouter.delete('/',(req,res,next) => {
     Hotels.remove({})
